@@ -1,0 +1,111 @@
+.index-page {//CONTENEDOR PRINCIPAL DE LA PÁGINA.
+  display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/
+  flex-direction: column;/*DIRECCIÓN DE LOS ELEMENTOS FLEXIBLES (EN COLUMNA).*/
+  min-height: 100vh;/*ALTURA MÍNIMA DE LA PÁGINA.*/
+  background-color: var(--color-fondo-pagina);/*COLOR DE FONDO DE LA PÁGINA.*/
+}
+
+.index-cuerpo {//CUERPO CENTRAL DE LA PÁGINA.
+  flex: 1;/*COMPORTAMIENTO DE CRECIMIENTO DEL ELEMENTO FLEXIBLE.*/
+  display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/
+  align-items: center;/*ALINEACIÓN VERTICAL DE LOS ELEMENTOS.*/
+  justify-content: center;/*ALINEACIÓN HORIZONTAL DE LOS ELEMENTOS.*/
+  padding: 40px 24px;/*ESPACIO INTERNO (RELLENO) DEL CUERPO.*/
+}
+
+.login-card {//TARJETA CONTENEDORA DEL FORMULARIO.
+  background-color: var(--color-fondo);/*COLOR DE FONDO DE LA TARJETA.*/
+  padding: 48px 40px;/*ESPACIO INTERNO (RELLENO) DE LA TARJETA.*/
+  border-radius: var(--radio-card);/*RADIO DE REDONDEO DE LAS ESQUINAS DEL BORDE.*/
+  box-shadow: var(--sombra-modal);/*SOMBRA DE LA TARJETA.*/
+  width: 460px;/*ANCHURA DE LA TARJETA.*/
+  max-width: 100%;/*ANCHURA MÁXIMA DE LA TARJETA.*/
+  border: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE.*/
+}
+
+/* ---- Brand ---- */
+.login-brand {//CONTENEDOR DE LA MARCA (LOGO Y TÍTULO).
+  text-align: center;/*ALINEACIÓN DEL TEXTO.*/
+  margin-bottom: 32px;/*ESPACIO DEL MARGEN INFERIOR.*/
+}
+
+.login-logo-wrapper {//CONTENEDOR DEL LOGO.
+  display: inline-block;/*TIPO DE VISUALIZACIÓN DEL ELEMENTO.*/
+  margin: 0 auto 16px;/*ESPACIO DEL MARGEN SUPERIOR, CENTRADO HORIZONTAL E INFERIOR DEL CONTENEDOR.*/
+  border-radius: 10px;/*RADIO DE REDONDEO DE LAS ESQUINAS DEL BORDE.*/
+}
+
+.login-logo-img {//IMAGEN DEL LOGO.
+  display: block;/*TIPO DE VISUALIZACIÓN DEL ELEMENTO.*/
+  height: 72px;/*ALTURA DE LA IMAGEN.*/
+  width: auto;/*ANCHURA AUTOMÁTICA DE LA IMAGEN.*/
+  object-fit: contain;/*AJUSTE DEL CONTENIDO DENTRO DE LA IMAGEN.*/
+}
+
+.login-titulo {//TÍTULO DEL FORMULARIO.
+  font-family: var(--fuente-titulos);/*TIPO DE LETRA DEL TEXTO.*/
+  font-size: 22px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  font-weight: 700;/*NEGRILLA DE LETRA DEL TEXTO.*/
+  color: var(--color-principal);/*COLOR DE LETRA DEL TEXTO.*/
+  margin: 0 0 6px;/*ESPACIO DEL MARGEN SUPERIOR, DERECHO E INFERIOR DEL TÍTULO.*/
+  letter-spacing: -0.3px;/*ESPACIO ENTRE LAS LETRAS DEL TEXTO.*/
+}
+
+.login-subtitulo {//SUBTÍTULO DEL FORMULARIO.
+  font-size: 13px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  color: var(--color-texto-secundario);/*COLOR DE LETRA DEL TEXTO.*/
+  margin: 0;/*ELIMINA EL ESPACIO DEL MARGEN DEL SUBTÍTULO.*/
+}
+
+/* ---- Texto de instrucciones ---- */
+.texto-instrucciones {//TEXTO DE INSTRUCCIONES.
+  font-size: 13px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  color: var(--color-texto-main);/*COLOR DE LETRA DEL TEXTO.*/
+  line-height: 1.6;/*ALTURA DE LÍNEA DEL TEXTO.*/
+  margin: 0 0 20px;/*ESPACIO DEL MARGEN SUPERIOR, DERECHO E INFERIOR DEL TEXTO.*/
+}
+
+/* ---- Ficha resumen del usuario encontrado ---- */
+.ficha-usuario {//TARJETA RESUMEN DEL USUARIO ENCONTRADO.
+  background-color: var(--color-fondo-pagina);/*COLOR DE FONDO DE LA TARJETA.*/
+  border: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE.*/
+  border-radius: var(--radio-borde);/*RADIO DE REDONDEO DE LAS ESQUINAS DEL BORDE.*/
+  padding: 14px 16px;/*ESPACIO INTERNO (RELLENO) DE LA TARJETA.*/
+  margin-bottom: 20px;/*ESPACIO DEL MARGEN INFERIOR.*/
+}
+
+.ficha-dato {//DATO INDIVIDUAL DE LA FICHA DEL USUARIO.
+  font-size: 13px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  color: var(--color-texto-main);/*COLOR DE LETRA DEL TEXTO.*/
+  margin-bottom: 6px;/*ESPACIO DEL MARGEN INFERIOR.*/
+
+  &:last-child {/*ELIMINA EL MARGEN INFERIOR DEL ÚLTIMO DATO.*/ margin-bottom: 0;/*ELIMINA EL ESPACIO DEL MARGEN INFERIOR.*/ }
+
+  strong {/*TEXTO DESTACADO DEL DATO.*/ color: var(--color-texto-secundario);/*COLOR DE LETRA DEL TEXTO.*/ font-weight: 600;/*NEGRILLA DE LETRA DEL TEXTO.*/ }
+}
+
+/* ---- Inputs ---- */
+.input-group {//GRUPO DE CAMPO DE ENTRADA (ETIQUETA + INPUT).
+  text-align: left;/*ALINEACIÓN DEL TEXTO.*/
+  margin-bottom: 18px;/*ESPACIO DEL MARGEN INFERIOR.*/
+
+  label {//ETIQUETA DEL CAMPO.
+    display: block;/*TIPO DE VISUALIZACIÓN DEL ELEMENTO.*/
+    font-size: 14px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+    font-weight: 500;/*NEGRILLA DE LETRA DEL TEXTO.*/
+    margin-bottom: 7px;/*ESPACIO DEL MARGEN INFERIOR.*/
+    color: var(--color-texto-main);/*COLOR DE LETRA DEL TEXTO.*/
+  }
+}
+
+/* ---- Mensajes de validación por campo ---- */
+.texto-campo-nulo {//MENSAJE DE VALIDACIÓN DEL CAMPO.
+  margin-top: 5px;/*ESPACIO DEL MARGEN SUPERIOR DEL MENSAJE.*/
+  font-size: 12px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  color: var(--color-error);/*COLOR DE LETRA DEL TEXTO.*/
+  font-weight: 500;/*NEGRILLA DE LETRA DEL TEXTO.*/
+}
+
+/* ---- Botones apilados ---- */
+.btn-primary {/*BOTÓN PRIMARIO APILADO.*/ margin-top: 6px;/*ESPACIO DEL MARGEN SUPERIOR DEL BOTÓN.*/ }
+.btn-secondary {/*BOTÓN SECUNDARIO APILADO.*/ margin-top: 10px;/*ESPACIO DEL MARGEN SUPERIOR DEL BOTÓN.*/ }

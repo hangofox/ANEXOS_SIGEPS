@@ -1,0 +1,71 @@
+/* ============================================
+   REPORTES DE SEGURIDAD — SIGEPS V1.0
+   ============================================ */
+
+.panel-seccion { /*CONTENEDOR PRINCIPAL DE LA SECCIÓN.*/ display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/ flex-direction: column;/*DIRECCIÓN DE LOS ELEMENTOS FLEXIBLES.*/ gap: 20px;/*ESPACIO ENTRE LOS ELEMENTOS DEL CONTENEDOR.*/ }
+
+.panel-header { /*ENCABEZADO DEL PANEL.*/ display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/ align-items: center;/*ALINEACIÓN VERTICAL DE LOS ELEMENTOS.*/ gap: 14px;/*ESPACIO ENTRE LOS ELEMENTOS DEL CONTENEDOR.*/ }
+.panel-header-icon { /*ÍCONO DEL ENCABEZADO DEL PANEL.*/ width: 44px;/*ANCHURA DEL ÍCONO.*/ height: 44px;/*ALTURA DEL ÍCONO.*/ border-radius: 10px;/*RADIO DE REDONDEO DE LAS ESQUINAS DEL ÍCONO.*/ background-color: rgba(239, 68, 68, 0.1);/*COLOR DE FONDO DEL ÍCONO.*/ color: var(--color-error);/*COLOR DE LETRA DEL ÍCONO.*/ display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/ align-items: center;/*ALINEACIÓN VERTICAL DE LOS ELEMENTOS.*/ justify-content: center;/*ALINEACIÓN HORIZONTAL DE LOS ELEMENTOS.*/ flex-shrink: 0;/*IMPIDE QUE EL ÍCONO SE ENCOJA DENTRO DEL CONTENEDOR FLEXIBLE.*/ }
+.panel-titulo { /*TÍTULO DEL PANEL.*/ font-family: var(--fuente-titulos);/*TIPO DE LETRA DEL TÍTULO.*/ font-size: 18px;/*TAMAÑO DE LETRA DEL TÍTULO.*/ font-weight: 700;/*NEGRILLA DE LETRA DEL TÍTULO.*/ color: var(--color-principal);/*COLOR DE LETRA DEL TÍTULO.*/ margin: 0 0 4px;/*ESPACIO DE MARGEN SUPERIOR, DERECHO E INFERIOR DEL TÍTULO.*/ }
+.panel-subtitulo { /*SUBTÍTULO DEL PANEL.*/ font-size: 13px;/*TAMAÑO DE LETRA DEL SUBTÍTULO.*/ color: var(--color-texto-secundario);/*COLOR DE LETRA DEL SUBTÍTULO.*/ margin: 0;/*ELIMINA EL MARGEN DEL SUBTÍTULO.*/ }
+
+.semaforo { /*CONTENEDOR DEL SEMÁFORO DE TOTALES.*/ display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/ flex-wrap: wrap;/*PERMITE QUE LOS ELEMENTOS FLEXIBLES PASEN A OTRA LÍNEA.*/ gap: 12px;/*ESPACIO ENTRE LOS ELEMENTOS DEL CONTENEDOR.*/ }
+.semaforo-item {//ITEM INDIVIDUAL DEL SEMÁFORO DE TOTALES.
+  display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/
+  flex-direction: column;/*DIRECCIÓN DE LOS ELEMENTOS FLEXIBLES.*/
+  align-items: center;/*ALINEACIÓN VERTICAL DE LOS ELEMENTOS.*/
+  padding: 14px 22px;/*ESPACIO INTERNO (RELLENO) DEL ITEM.*/
+  border-radius: var(--radio-card);/*RADIO DE REDONDEO DE LAS ESQUINAS DEL ITEM.*/
+  border: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE DEL ITEM.*/
+  background-color: var(--color-fondo);/*COLOR DE FONDO DEL ITEM.*/
+  box-shadow: var(--sombra-card);/*SOMBRA DEL ITEM.*/
+  min-width: 90px;/*ANCHURA MÍNIMA DEL ITEM.*/
+}
+.semaforo-numero { /*NÚMERO GRANDE DEL ITEM DEL SEMÁFORO.*/ font-family: var(--fuente-titulos);/*TIPO DE LETRA DEL TEXTO.*/ font-size: 26px;/*TAMAÑO DE LETRA DEL TEXTO.*/ font-weight: 700;/*NEGRILLA DE LETRA DEL TEXTO.*/ }
+.semaforo-etiqueta { /*ETIQUETA DESCRIPTIVA DEL ITEM DEL SEMÁFORO.*/ font-size: 11px;/*TAMAÑO DE LETRA DEL TEXTO.*/ font-weight: 600;/*NEGRILLA DE LETRA DEL TEXTO.*/ text-transform: uppercase;/*TRANSFORMACIÓN DE MAYÚSCULAS/MINÚSCULAS DEL TEXTO.*/ letter-spacing: 0.5px;/*ESPACIO ENTRE LAS LETRAS DEL TEXTO.*/ color: var(--color-texto-secundario);/*COLOR DE LETRA DEL TEXTO.*/ text-align: center;/*ALINEACIÓN DEL TEXTO.*/ }
+.semaforo-total .semaforo-numero { /*COLOR DEL NÚMERO EN EL ITEM DE TOTAL.*/ color: var(--color-principal);/*COLOR DE LETRA DEL NÚMERO.*/ }
+.semaforo-inactivos .semaforo-numero { /*COLOR DEL NÚMERO EN EL ITEM DE INACTIVOS.*/ color: var(--color-error);/*COLOR DE LETRA DEL NÚMERO.*/ }
+
+.cargando-aviso {//AVISO MOSTRADO MIENTRAS SE CARGAN LOS DATOS.
+  padding: 18px;/*ESPACIO INTERNO (RELLENO) DEL AVISO.*/
+  text-align: center;/*ALINEACIÓN DEL TEXTO.*/
+  color: var(--color-texto-secundario);/*COLOR DE LETRA DEL TEXTO.*/
+  font-size: 13px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  background-color: var(--color-fondo);/*COLOR DE FONDO DEL AVISO.*/
+  border-radius: var(--radio-card);/*RADIO DE REDONDEO DE LAS ESQUINAS DEL AVISO.*/
+  border: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE DEL AVISO.*/
+}
+
+.tabla-card { /*TARJETA CONTENEDORA DE LA TABLA.*/ background-color: var(--color-fondo);/*COLOR DE FONDO DE LA TARJETA.*/ border-radius: var(--radio-card);/*RADIO DE REDONDEO DE LAS ESQUINAS DE LA TARJETA.*/ border: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE DE LA TARJETA.*/ box-shadow: var(--sombra-card);/*SOMBRA DE LA TARJETA.*/ overflow: hidden;/*OCULTA EL CONTENIDO QUE SOBRESALGA DE LA TARJETA.*/ }
+.tabla-header {//ENCABEZADO DE LA TARJETA DE LA TABLA.
+  display: flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE.*/
+  align-items: center;/*ALINEACIÓN VERTICAL DE LOS ELEMENTOS.*/
+  justify-content: space-between;/*ALINEACIÓN HORIZONTAL DE LOS ELEMENTOS CON ESPACIO ENTRE ELLOS.*/
+  padding: 12px 16px;/*ESPACIO INTERNO (RELLENO) DEL ENCABEZADO.*/
+  border-bottom: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE INFERIOR.*/
+  background-color: var(--color-fondo-pagina);/*COLOR DE FONDO DEL ENCABEZADO.*/
+
+  h4 { /*TÍTULO DENTRO DEL ENCABEZADO DE LA TABLA.*/ font-family: var(--fuente-titulos);/*TIPO DE LETRA DEL TÍTULO.*/ font-size: 13px;/*TAMAÑO DE LETRA DEL TÍTULO.*/ font-weight: 700;/*NEGRILLA DE LETRA DEL TÍTULO.*/ color: var(--color-texto-main);/*COLOR DE LETRA DEL TÍTULO.*/ margin: 0;/*ELIMINA EL MARGEN DEL TÍTULO.*/ }
+}
+.badge-alerta-conteo {//BADGE CON EL CONTEO DE ALERTAS.
+  display: inline-flex;/*CONVIERTE EL ELEMENTO EN FLEXIBLE EN LÍNEA.*/
+  align-items: center;/*ALINEACIÓN VERTICAL DE LOS ELEMENTOS.*/
+  justify-content: center;/*ALINEACIÓN HORIZONTAL DE LOS ELEMENTOS.*/
+  min-width: 22px;/*ANCHURA MÍNIMA DEL BADGE.*/
+  height: 22px;/*ALTURA DEL BADGE.*/
+  padding: 0 7px;/*ESPACIO INTERNO (RELLENO) DEL BADGE.*/
+  border-radius: 11px;/*RADIO DE REDONDEO DE LAS ESQUINAS DEL BADGE.*/
+  font-size: 12px;/*TAMAÑO DE LETRA DEL TEXTO.*/
+  font-weight: 700;/*NEGRILLA DE LETRA DEL TEXTO.*/
+  background-color: rgba(239, 68, 68, 0.1);/*COLOR DE FONDO DEL BADGE.*/
+  color: var(--color-error);/*COLOR DE LETRA DEL TEXTO DEL BADGE.*/
+}
+.tabla-contenido { /*CONTENEDOR CON DESPLAZAMIENTO DE LA TABLA.*/ overflow-x: auto;/*ACTIVA LA FUNCIÓN DEL SCROLL HORIZONTAL.*/
+  table { /*TABLA DE RESULTADOS.*/ width: 100%;/*ANCHURA DE LA TABLA.*/ border-collapse: collapse;/*UNE LOS BORDES DE LAS CELDAS DE LA TABLA.*/
+    th { /*CELDA DE ENCABEZADO DE LA TABLA.*/ background-color: var(--color-fondo-pagina);/*COLOR DE FONDO DE LA CELDA.*/ padding: 9px 14px;/*ESPACIO INTERNO (RELLENO) DE LA CELDA.*/ text-align: left;/*ALINEACIÓN DEL TEXTO.*/ font-size: 11px;/*TAMAÑO DE LETRA DEL TEXTO.*/ font-weight: 700;/*NEGRILLA DE LETRA DEL TEXTO.*/ color: var(--color-texto-secundario);/*COLOR DE LETRA DEL TEXTO.*/ text-transform: uppercase;/*TRANSFORMACIÓN DE MAYÚSCULAS/MINÚSCULAS DEL TEXTO.*/ letter-spacing: 0.5px;/*ESPACIO ENTRE LAS LETRAS DEL TEXTO.*/ border-bottom: 1px solid var(--color-bordes);/*GROSOR Y COLOR DEL BORDE INFERIOR.*/ white-space: nowrap;/*CONTROL DEL SALTO DE LÍNEA DEL TEXTO.*/ }
+    td { /*CELDA DE DATOS DE LA TABLA.*/ padding: 10px 14px;/*ESPACIO INTERNO (RELLENO) DE LA CELDA.*/ font-size: 13px;/*TAMAÑO DE LETRA DEL TEXTO.*/ color: var(--color-texto-main);/*COLOR DE LETRA DEL TEXTO.*/ border-bottom: 1px solid var(--color-bordes-suave);/*GROSOR Y COLOR DEL BORDE INFERIOR.*/ }
+    tr:last-child td { /*ELIMINA EL BORDE INFERIOR DE LA ÚLTIMA FILA.*/ border-bottom: none;/*ELIMINA EL BORDE INFERIOR DE LA CELDA.*/ }
+    tr:hover td { /*ESTILO DE LA FILA AL PASAR EL MOUSE.*/ background-color: rgba(14, 165, 233, 0.03);/*COLOR DE FONDO DE LA CELDA AL PASAR EL MOUSE.*/ }
+  }
+}
+.tabla-vacia { /*MENSAJE MOSTRADO CUANDO NO HAY REGISTROS.*/ text-align: center;/*ALINEACIÓN DEL TEXTO.*/ padding: 22px !important;/*ESPACIO INTERNO (RELLENO) DEL MENSAJE.*/ color: var(--color-texto-secundario) !important;/*COLOR DE LETRA DEL TEXTO.*/ font-size: 13px !important;/*TAMAÑO DE LETRA DEL TEXTO.*/ white-space: normal !important;/*CONTROL DEL SALTO DE LÍNEA DEL TEXTO.*/ }

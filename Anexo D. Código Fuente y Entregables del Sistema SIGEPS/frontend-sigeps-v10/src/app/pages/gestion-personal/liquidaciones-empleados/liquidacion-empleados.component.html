@@ -1,0 +1,152 @@
+<!-- COMPONENTE: LIQUIDACIÓN DE EMPLEADOS — SIGEPS V1.0 -->
+<div class="panel-seccion" *ngIf="liquidacionesForm" [formGroup]="liquidacionesForm">
+
+  <!-- ENCABEZADO -->
+  <div class="panel-header">
+    <div class="panel-header-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    </div>
+    <div>
+      <h2 class="panel-titulo">Liquidaciones de Empleados</h2>
+      <p class="panel-subtitulo">Gestión de liquidaciones, primas, cesantías y vacaciones del empleado.</p>
+    </div>
+  </div>
+
+  <!-- TARJETAS DE RESUMEN -->
+  <div class="semaforo">
+    <div class="semaforo-item semaforo-total">
+      <span class="semaforo-numero">{{ totalRegistros }}</span>
+      <span class="semaforo-etiqueta">Total</span>
+    </div>
+    <div class="semaforo-item semaforo-activos">
+      <span class="semaforo-numero">{{ formatearMoneda(totalValorBruto) }}</span>
+      <span class="semaforo-etiqueta">Valor Bruto</span>
+    </div>
+    <div class="semaforo-item semaforo-inactivos">
+      <span class="semaforo-numero">{{ formatearMoneda(totalValorNeto) }}</span>
+      <span class="semaforo-etiqueta">Valor Neto</span>
+    </div>
+  </div>
+
+  <!-- DESGLOSE DE LOS TOTALES DEL SEMÁFORO POR AÑO, SOBRE EL MISMO LISTADO YA FILTRADO -->
+  <div class="tabla-card" *ngIf="subtotalesPorAnio.length > 0">
+    <div class="tabla-contenido">
+      <table>
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th>Registros</th>
+            <th>Valor Bruto</th>
+            <th>Valor Neto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subtotal of subtotalesPorAnio">
+            <td>{{ subtotal.anio }}</td>
+            <td>{{ subtotal.totalRegistros }}</td>
+            <td>{{ formatearMoneda(subtotal.totalValorBruto) }}</td>
+            <td>{{ formatearMoneda(subtotal.totalValorNeto) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BARRA DE BÚSQUEDA -->
+  <div class="barra-acciones">
+    <div class="barra-filtros">
+      <select formControlName="cboxTipoTarifaEmpleadoSeleccionado" (change)="buscar()">
+        <option value="">TODOS LOS TIPOS DE LIQUIDACIÓN</option>
+        <option *ngFor="let tipo of tiposTarifasEmpleados" [value]="tipo.idTipoTarifaEmpleado">
+          {{ tipo.nombreTipoTarifaEmpleado }}
+        </option>
+      </select>
+      <select formControlName="cboxAnioTarifaEmpleadoSeleccionado" (change)="buscar()">
+        <option value="">TODOS LOS AÑOS</option>
+        <option *ngFor="let anio of aniosTarifasEmpleados" [value]="anio">{{ anio }}</option>
+      </select>
+      <label class="label-filtro-fecha">
+        Desde
+        <input type="datetime-local" step="1" formControlName="ctextFechaHMSInicio" (change)="buscar()">
+      </label>
+      <label class="label-filtro-fecha">
+        Hasta
+        <input type="datetime-local" step="1" formControlName="ctextFechaHMSFin" (change)="buscar()">
+      </label>
+      <input type="text" formControlName="ctextPalabraClave"
+        placeholder="Buscar por nombre o documento..." (keyup.enter)="buscar()">
+      <button type="button" class="btn-sigeps btn-buscar" (click)="buscar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Buscar
+      </button>
+    </div>
+  </div>
+
+  <!-- TABLA DE LIQUIDACIONES -->
+  <div class="tabla-card">
+    <div class="tabla-contenido">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Empleado</th>
+            <th>Documento</th>
+            <th>Tipo de Liquidación</th>
+            <th>Año</th>
+            <th>Horas Trabajadas</th>
+            <th>Valor Hora</th>
+            <th>Valor Bruto</th>
+            <th>Descuentos</th>
+            <th>Valor Neto</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let liqEmpl of liquidaciones; let i = index">
+            <td>{{ i + 1 + (paginaActual * tandaNumeroRegistrosporPagina) }}</td>
+            <td>{{ liqEmpl.empleado.nombresEmpleado }} {{ liqEmpl.empleado.primerApellidoEmpleado }} {{ liqEmpl.empleado.segundoApellidoEmpleado }}</td>
+            <td>{{ liqEmpl.empleado.numeroDocumentoIdentificacionEmpleado }}</td>
+            <td>{{ liqEmpl.tarifa.tipoTarifaEmpleadoDTO.nombreTipoTarifaEmpleado }}</td>
+            <td>{{ liqEmpl.tarifa.anioTarifaEmpleado }}</td>
+            <td>{{ liqEmpl.horasTrabajadas | number:'1.2-2' }}</td>
+            <td>{{ formatearMoneda(liqEmpl.tarifa.valorHoraTarifaEmpleado) }}</td>
+            <td>{{ formatearMoneda(liqEmpl.valorBruto) }}</td>
+            <td>{{ formatearMoneda(calcularValorDescuentos(liqEmpl)) }}</td>
+            <td><strong>{{ formatearMoneda(calcularValorNeto(liqEmpl)) }}</strong></td>
+            <td>
+              <span class="badge-estado"
+                [ngClass]="liqEmpl.tarifa.estadoTarifaEmpleado === 'ACTIVO' ? 'badge-activo' : 'badge-pendiente'">
+                {{ liqEmpl.tarifa.estadoTarifaEmpleado }}
+              </span>
+            </td>
+          </tr>
+          <tr *ngIf="liquidaciones.length === 0">
+            <td colspan="11" class="tabla-vacia">No se encontraron registros de liquidaciones.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PAGINACIÓN -->
+    <div class="paginacion">
+      <div class="paginacion-info">
+        <span>Registros por página:</span>
+        <select formControlName="cboxTandaNumeroRegistrosporPaginaSeleccionado" (change)="seleccionarTandaNumeroRegistrosporPagina()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+        </select>
+      </div>
+      <div class="paginacion-controles">
+        <button class="btn-pag" [disabled]="paginaActual === 0" (click)="cambiarPagina(paginaActual - 1)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="paginacion-texto">{{ paginaActual + 1 }} / {{ calcularTotalPaginas() }}</span>
+        <button class="btn-pag" [disabled]="paginaActual >= calcularTotalPaginas() - 1" (click)="cambiarPagina(paginaActual + 1)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
