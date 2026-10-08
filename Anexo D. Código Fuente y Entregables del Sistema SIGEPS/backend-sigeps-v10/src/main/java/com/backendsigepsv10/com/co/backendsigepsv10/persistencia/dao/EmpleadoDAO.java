@@ -77,8 +77,8 @@ public class EmpleadoDAO {
         empleado.setDireccionEmpleado(empleadoDTO.getDireccionEmpleado().toUpperCase());
         empleado.setTelefonoEmpleado(empleadoDTO.getTelefonoEmpleado().toUpperCase());
         empleado.setMovilEmpleado(empleadoDTO.getMovilEmpleado().toUpperCase());
-        empleado.setCorreoElectronicoPersonalEmpleado(empleadoDTO.getCorreoElectronicoPersonalEmpleado().toUpperCase());
-        empleado.setCorreoElectronicoInstitucionalEmpleado(empleadoDTO.getCorreoElectronicoInstitucionalEmpleado().toUpperCase());
+        empleado.setCorreoElectronicoPersonalEmpleado(empleadoDTO.getCorreoElectronicoPersonalEmpleado());
+        empleado.setCorreoElectronicoInstitucionalEmpleado(empleadoDTO.getCorreoElectronicoInstitucionalEmpleado());
         empleado.setPaisOrigenEmpleado(empleadoDTO.getPaisOrigenEmpleado().toUpperCase());
         empleado.setDepartamentooEstadoOrigenEmpleado(empleadoDTO.getDepartamentooEstadoOrigenEmpleado().toUpperCase());
         empleado.setCiudadOrigenEmpleado(empleadoDTO.getCiudadOrigenEmpleado().toUpperCase());
@@ -140,8 +140,8 @@ public class EmpleadoDAO {
         empleadoDTO.setDireccionEmpleado(empleado.getDireccionEmpleado().toUpperCase());
         empleadoDTO.setTelefonoEmpleado(empleado.getTelefonoEmpleado().toUpperCase());
         empleadoDTO.setMovilEmpleado(empleado.getMovilEmpleado().toUpperCase());
-        empleadoDTO.setCorreoElectronicoPersonalEmpleado(empleado.getCorreoElectronicoPersonalEmpleado().toUpperCase());
-        empleadoDTO.setCorreoElectronicoInstitucionalEmpleado(empleado.getCorreoElectronicoInstitucionalEmpleado().toUpperCase());
+        empleadoDTO.setCorreoElectronicoPersonalEmpleado(empleado.getCorreoElectronicoPersonalEmpleado());
+        empleadoDTO.setCorreoElectronicoInstitucionalEmpleado(empleado.getCorreoElectronicoInstitucionalEmpleado());
         empleadoDTO.setPaisOrigenEmpleado(empleado.getPaisOrigenEmpleado().toUpperCase());
         empleadoDTO.setDepartamentooEstadoOrigenEmpleado(empleado.getDepartamentooEstadoOrigenEmpleado().toUpperCase());
         empleadoDTO.setCiudadOrigenEmpleado(empleado.getCiudadOrigenEmpleado().toUpperCase());
